@@ -4,7 +4,7 @@ var connect = require('gulp-connect-php')
 var reload = browserSync.reload;
 
 
-gulp.task('connect-sync', function () {
+gulp.task('auto-reload', function () {
   connect.server({
       // base: './',
       // port: 8095,
@@ -20,5 +20,3 @@ gulp.task('connect-sync', function () {
 
   gulp.watch('**/*.php').on('change', reload)
 })
-
-
