@@ -59,26 +59,6 @@ class Adfox_API {
         curl_close($curl);
     }
 
-    function getList($actionObject, $add ) {
-        $this->options['object'] = 'account'; // по-умолчанию
-        $this->options['action'] = 'list'; // по-умолчанию
-
-        $this->options['actionObject'] = $actionObject;
-
-        $this->options = array_merge($this->options, $add);
-
-        return $this->getResults();
-    }
-
-    function request($object = '', $action = '', $actionObject ='', $show = "advanced" ) {
-        $this->options['action'] = $action;
-        $this->options['actionObject'] = $actionObject;
-        $this->options['object'] = $object;
-        $this->options['show'] = $show;
-
-        return $this->getResults();
-    }
-
     function post() {
 
         $data = http_build_query($this->options);
