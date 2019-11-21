@@ -15,19 +15,34 @@
 
     <div class="form-wrapper">
         <form action="">
-            <div class="input-text">
-                <input type="url" id="url-input" name="url" autofocus="" required="" class="input">
-                <label for="url-input">URL</label>
-            </div>
-            <div class="input-text">
-                <input type="text" id="name-input" name="url"  autofocus="" required="" class="input">
-                <label for="name-input">Name</label>
-            </div>
-            <div class="input-text">
-                <input type="text" id="image-input" name="url" autofocus="" required=""
-                       class="input">
-                <label for="image-input">Image link</label>
-            </div>
+
+            <fieldset>
+                <div class="input-text">
+                    <input type="url" id="url-input" name="url" autofocus="" required="" class="input">
+                    <label for="url-input">URL</label>
+                </div>
+                <div class="input-text">
+                    <input type="text" id="name-input" name="url" autofocus="" required="" class="input">
+                    <label for="name-input">Name</label>
+                </div>
+                <div class="input-text">
+                    <input type="text" id="image-input" name="url" autofocus="" required=""
+                           class="input">
+                    <label for="image-input">Image link</label>
+                </div>
+            </fieldset>
+
+            <fieldset class="options">
+                <div class="grid">
+                    <input type="number" name="views" id="views" value="50000" min="0" step="5000" required=""
+                           class="input input_count-views-">
+                    <input type="time" name="time" id="time" value="00:00" step="3600" required="" class="input
+                    input_time">
+                    <input type="datetime-local" name="date" class="input input_date">
+
+                </div>
+
+            </fieldset>
         </form>
     </div>
 </main>
