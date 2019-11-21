@@ -16,16 +16,17 @@
     <div class="form-wrapper">
         <form action="">
             <div class="input-text">
-                <input type="url" id="url" name="url" autofocus="" required="" class="input">
-                <span>url</span>
+                <input type="url" id="url-input" name="url" autofocus="" required="" class="input">
+                <label for="url-input">URL</label>
             </div>
             <div class="input-text">
-                <input type="text" id="url" name="url" placeholder="name" autofocus="" required="" class="input">
-                <span>name</span>
+                <input type="text" id="name-input" name="url"  autofocus="" required="" class="input">
+                <label for="name-input">Name</label>
             </div>
             <div class="input-text">
-                <input type="text" id="url" name="url" placeholder="image link" autofocus="" required="" class="input">
-                <span>image link</span>
+                <input type="text" id="image-input" name="url" autofocus="" required=""
+                       class="input">
+                <label for="image-input">Image link</label>
             </div>
         </form>
     </div>
