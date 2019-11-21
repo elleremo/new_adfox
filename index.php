@@ -38,7 +38,7 @@
                            class="input input_count-views-">
                     <input type="time" name="time" id="time" value="00:00" step="3600" required="" class="input
                     input_time">
-                    <input type="datetime-local" name="date" class="input input_date">
+                    <input type="datet" name="date" class="input input_date" >
 
                 </div>
 
