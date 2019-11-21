@@ -12,13 +12,20 @@
 </head>
 <body>
 <main>
+
     <div class="form-wrapper">
         <form action="">
             <div class="input-text">
-                <input type="url" id="url" name="url" placeholder="url" autofocus="" required="" class="input">
+                <input type="url" id="url" name="url" autofocus="" required="" class="input">
+                <span>url</span>
             </div>
             <div class="input-text">
-                <input type="url" id="url" name="url" placeholder="name" autofocus="" required="" class="input">
+                <input type="text" id="url" name="url" placeholder="name" autofocus="" required="" class="input">
+                <span>name</span>
+            </div>
+            <div class="input-text">
+                <input type="text" id="url" name="url" placeholder="image link" autofocus="" required="" class="input">
+                <span>image link</span>
             </div>
         </form>
     </div>

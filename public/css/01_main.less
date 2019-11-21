@@ -1,3 +1,5 @@
+@import "vars";
+
 html {
   height: 100vh;
 }
@@ -6,86 +8,140 @@ body {
 
   color: white;
 
-  background: #8a2387; /* fallback for old browsers */
-  background: linear-gradient(145deg, #8a2387, #e94057, #f27121); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  //background: #8a2387; /* fallback for old browsers */
+  background-image: linear-gradient(145deg, #8a2387, #e94057, #f27121); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat ;
   height: 100%;
   display: block;
 
 
   font-family: sans-serif;
+  font-size: 20px;
+  .fsize(16,20);
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 15px;
+
   @media (max-width: 600px ) {
     padding: 2%;
   }
 
 }
 
+//body{
+//  //background-color:#666;
+//  //background-image: linear-gradient(45deg, transparent,transparent 48%, rgba(255,255,255,.3) 48%, rgba(255,255,255,.3) 52%, transparent 52%);
+//  //background-size:50px 50px;
+//
+//  &:before{
+//    content: '';
+//    display: block;
+//    position: absolute;
+//    z-index: -1;
+//    top: 0;
+//    bottom: 0;
+//    left: 0;
+//    right: 0;
+//    margin: auto;
+//    background-image: radial-gradient(circle, transparent 0%, rgba(7, 9, 11, 0.56) 100%);
+//  }
+//}
+
 main {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 500px;
 }
 
 .form-wrapper {
-
-}
+ }
 
 form {
-  background: #8a2387; /* fallback for old browsers */
+  background: rgba(0, 0, 0, 0.2); /* fallback for old browsers */
   //background: linear-gradient(145deg, #8a2387, #929fe9, #f24fdc);
-  background: linear-gradient(145deg, #47285f, #77242c);
+  //background: linear-gradient(145deg, rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.31));
   border-radius: 5px;
-  border: 1px solid white;
-  padding: 2%;
-}
-
-.input {
-  //border: none;
-  color: white;
-  width: 100%;
-  outline: none;
-  margin: 5px 0;
-  border-radius: 5px;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 25px;
-  background-position: center -20px;
-  border: 2px solid rgba(0, 0, 0, 0.15);
-  transition: background-position .2s ease-out;
-
-  &:hover {
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.41) 0%, rgba(0, 0, 0, 0) 100%);
-    background-position: center 0;
-    background-size: contain;
-    background-repeat: no-repeat;
-    transition: background-position .2s ease-out;
-    //border: 2px solid rgba(0, 0, 0, 0.25);
-
-  }
-
-
-  &:focus {
-    //outline: none;
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid rgba(0, 0, 0, 0.5);
-    border-spacing: 4px;
-    transition: border, background .2s ease-out;
-
-
-  }
-
-
+  border: 1px solid #343434;
+  padding: 0.4em;
+  box-shadow: 0px 10px 40px 5px rgba(0, 0, 0, 0.2);
 
 }
 
-.input-text {
+
+.input-text{
+  margin-bottom: 5px;
   position: relative;
   display: flex;
   align-items: center;
 
-  .input {
+  span{
+    position: absolute;
+    left: .8em;
+    top: .7em;
+    color: #d7d7d7;
+
   }
 }
+
+//.input::placeholder {
+//  position: absolute;
+//}
+
+.input {
+  //border: none;
+  color: #d5d5d5;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+
+
+  background: rgba(0, 0, 0, 0.0);
+  padding: 0.2em;
+
+  margin-top: 0.7em;
+
+  //background-position: center -20px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+  border-left: 0.3em solid rgba(0, 0, 0, 0.0);
+  border-right: 0.3em  solid rgba(0, 0, 0, 0.0);
+  transition: all .2s ease-out;
+
+
+  &:hover {
+    //background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.41) 0%, rgba(0, 0, 0, 0) 100%);
+    //background-position: center 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    box-shadow: inset 0 -1em 1em -1em rgba(0, 0, 0, 0.3);
+    //transition: box-shadow .2s ease-out;
+    //border: 2px solid rgba(0, 0, 0, 0.25);
+  }
+
+
+  &:focus {
+    outline: none;
+    //background: rgba(0, 0, 0, 0.4);
+    border-left: 0.3em solid rgba(0, 0, 0, 0.5);
+    border-right: 0.3em  solid rgba(0, 0, 0, 0.5);
+
+    transition: all .2s ease-out;
+    box-shadow: inset 0 -1em 1em -1em rgba(0, 0, 0, 0.0);
+  }
+
+  &.not-empty  ~ span ,
+  &:focus ~ span {
+    //transform:  scale(.8);
+    transition: all .2s ease-out;
+    top: -.5em;
+
+    color: #a9a9a9;
+    //font-size: .8em;
+
+  }
+}
+
+
 
