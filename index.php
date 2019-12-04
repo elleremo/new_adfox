@@ -47,6 +47,8 @@
     </div>
 </main>
 
+<script src="public/js/vue.js"></script>
+<script src="public/js/app.js"></script>
 
 </body>
 </html>

@@ -14,6 +14,7 @@ body {
 
   //background: #8a2387; /* fallback for old browsers */
   background-image: linear-gradient(145deg, #8a2387, #e94057, #f27121); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  //background-image: url("../images/Бесшовная.png");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -103,7 +104,8 @@ fieldset {
   width: 100%;
   outline: none;
   border-radius: 5px;
-
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 
   background: rgba(0, 0, 0, 0.0);
   padding: 0.2em 10px;
@@ -130,9 +132,9 @@ fieldset {
     background-size: contain;
     background-repeat: no-repeat;
 
-    box-shadow: inset 0 -1em 1em -1em rgba(0, 0, 0, 0.3) !important;
+    //box-shadow: inset 0 -.5em .5em -.5em rgba(0, 0, 0, 0.3);
     //transition: box-shadow .2s ease-out;
-    //border: 2px solid rgba(0, 0, 0, 0.25);
+    border-bottom: 2px solid rgba(0, 0, 0, .25);
   }
 
 
@@ -144,9 +146,10 @@ fieldset {
 
     transition: all .2s ease-out;
     box-shadow: inset 0 -1em 1em -1em rgba(0, 0, 0, 0.0);
+    border-bottom: 2px solid rgba(242, 85, 206, 0.36);
   }
 
-  &.not-empty ~ label,
+  &.not ~ label,
   &:focus ~ label,
   &:valid ~ label {
     //transform:  scale(.8);
@@ -155,6 +158,7 @@ fieldset {
     color: rgba(255, 255, 255, 0.3);
     font-size: 0.8em;
     transform-origin: left;
+
   }
 
 

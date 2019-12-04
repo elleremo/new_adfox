@@ -20,7 +20,8 @@ gulp.task('auto-reload', function () {
     })
   gulp.watch([
     '**/*.css',
-    '**/*.php'
+    '**/*.php',
+    '**/*.js'
   ]).on('change', browserSync.reload)
 })
 
