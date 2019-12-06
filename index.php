@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="public/css/vendor/normalize.css">
     <link rel="stylesheet" href="public/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <?php
 //php -S 127.0.0.1:8085

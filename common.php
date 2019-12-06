@@ -1,8 +1,4 @@
 <?php
-/**
- * User: vladimir rambo petrozavodsky
- * Date: 06.12.2019
- */
 require_once 'my_api.php';
 
 ini_set('error_reporting', E_ALL);
@@ -12,6 +8,8 @@ ini_set('display_startup_errors', 1);
 header('Content-Type: application/json');
 
 $adfox = new myApi();
+
+if
 
 
 //$adfox->checkAuth();
@@ -24,10 +22,10 @@ $adfox = new myApi();
 //echo(json_encode($activeBannerList));
 //echo(json_encode($bannersByCampaign));
 
-$adfox->getStatByCampaign('heroine');
+//$adfox->getStatByCampaign('heroine');
 
 
 //echo(json_encode($adfox->getResults()));
-echo(json_encode($adfox->getResults()));
+//echo(json_encode($adfox->getResults()));
 
-//echo json_encode($_GET);
+echo json_encode($_GET);

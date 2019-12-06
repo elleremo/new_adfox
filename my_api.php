@@ -56,7 +56,7 @@ class myApi extends Adfox_API
 		if ($magName == 'brodude')
 			$nameID = myApi::DATA['brodudeID'];
 
-		return $this->getList('banner',
+		$this->getList('banner',
 		array(
 			'object' => 'campaign',
 			'action' => 'info',
