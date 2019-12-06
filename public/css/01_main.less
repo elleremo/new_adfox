@@ -15,6 +15,7 @@ body {
   //background: #8a2387; /* fallback for old browsers */
   background-image: linear-gradient(145deg, #8a2387, #e94057, #f27121); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   //background-image: url("../images/Бесшовная.png");
+  //background: #8a2387;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
@@ -59,7 +60,32 @@ main {
   max-width: 500px;
 }
 
+@keyframes smooth {
+  0%{
+    background: linear-gradient(145deg, rgba(9, 52, 138, 0.3), rgba(11, 61, 69, 0.3));
+  }
+  100%{
+    background: linear-gradient(145deg, rgba(9, 52, 138, 0.3), rgba(15, 128, 16, 0.73));
+  }
+}
+
+
 .form-wrapper {
+  position: relative;
+  border-radius: 5px;
+  &:before{
+    border-radius: 5px;
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    //background: linear-gradient(145deg, rgba(9, 52, 138, 0.3), rgba(11, 61, 69, 0.3));
+    opacity: .6;
+    z-index: -1;
+
+    //animation: smooth 1s infinite;
+  }
 }
 
 form {
@@ -103,9 +129,9 @@ fieldset {
   color: #d5d5d5;
   width: 100%;
   outline: none;
-  border-radius: 5px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+  //border-radius: 5px;
+  //border-bottom-left-radius: 0;
+  //border-bottom-right-radius: 0;
 
   background: rgba(0, 0, 0, 0.0);
   padding: 0.2em 10px;
@@ -118,6 +144,8 @@ fieldset {
   //border-left: 0.3em solid rgba(0, 0, 0, 0.0);
   //border-right: 0.3em  solid rgba(0, 0, 0, 0.0);
   transition: all .2s ease-out;
+
+
 
   &:not(output):-moz-ui-invalid {
     color: red;
@@ -134,7 +162,7 @@ fieldset {
 
     //box-shadow: inset 0 -.5em .5em -.5em rgba(0, 0, 0, 0.3);
     //transition: box-shadow .2s ease-out;
-    border-bottom: 2px solid rgba(0, 0, 0, .25);
+    border-bottom-color: rgba(0, 0, 0, .25);
   }
 
 
@@ -146,7 +174,7 @@ fieldset {
 
     transition: all .2s ease-out;
     box-shadow: inset 0 -1em 1em -1em rgba(0, 0, 0, 0.0);
-    border-bottom: 2px solid rgba(242, 85, 206, 0.36);
+    border-bottom-color: rgba(242, 85, 206, 0.36);
   }
 
   &.not ~ label,

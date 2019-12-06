@@ -1,0 +1,66 @@
+@import "vars";
+
+.stats {
+  margin-top: 5px;
+  display: block;
+  background-color: @base-black-color;
+  border-radius: 2px;
+  padding: 5px;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  .title {
+    margin: 0;
+    color: rgba(249, 246, 255, 0.45);
+    display: inline-block;
+    font-weight: 500;
+    padding: 4px 5px;
+    font-size: 12px;
+
+    background-color: rgba(0, 0, 0, 0.07);
+
+  }
+
+  .stat {
+    border-radius: 2px;
+    //border: rgba(0, 0, 0, 0.15) 1px solid;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.0);
+
+  }
+
+  span {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    word-spacing: 5px;
+    padding: 4px 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+
+    &.active {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    &.paused {
+      color: rgba(148, 164, 245, 0.85);
+    }
+
+    &.confirm {
+      color: rgba(173, 255, 47, 0.6);
+    }
+  }
+
+  .subdiv {
+    background: none;
+
+    &:before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+}

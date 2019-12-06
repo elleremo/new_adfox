@@ -1,16 +1,29 @@
-.grid{
+.grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1.5fr;
   grid-template-rows: 1fr;
   grid-gap: .5em;
   //grid-template-areas: ". . ." ". . .";
 }
 
-.options{
-  input{
+.options input, #upload {
+
     background: rgba(0, 0, 0, 0.15);
     border: 1px solid rgba(0, 0, 0, 0.2);
     padding: 10px;
-  }
+    border-radius: 5px;
 
+    &:hover{
+      background: rgba(0, 0, 0, 0.20);
+    }
+
+    &:focus {
+      background: rgba(0, 0, 0, 0.30);
+    }
+
+
+}
+
+#upload {
+  width: 100%;
 }

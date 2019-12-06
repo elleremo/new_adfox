@@ -39,13 +39,32 @@ class myApi extends Adfox_API
 		return $this->getResults();
 	}
 
+
+// Получить список баннеров по аккаунту
 	function getBannersByAccount() {
 			$this->getList('banner',
 				[
 					'show' => 'advanced',
 					'limit' => 1000,
-					'search' => 'intimi.shop'
+					'search' => 'intimi.shop' //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 				]);
+	}
+
+	function getStatByCampaign($magName) {
+		if ($magName == 'heroine')
+			$nameID = myApi::DATA['heroineID'];
+		if ($magName == 'brodude')
+			$nameID = myApi::DATA['brodudeID'];
+
+		return $this->getList('banner',
+		array(
+			'object' => 'campaign',
+			'action' => 'info',
+			"objectID" => $nameID,
+			'dateStart' => '2019-01-01',
+			'limit' => 1000
+		));
+
 	}
 
 	// Получить список баннеров по кампании

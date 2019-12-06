@@ -10,8 +10,14 @@
     <link rel="stylesheet" href="public/css/vendor/normalize.css">
     <link rel="stylesheet" href="public/css/style.css">
 </head>
+<?php
+//php -S 127.0.0.1:8085
+//require_once 'my_api.php';
+
+?>
 <body>
 <main>
+
 
     <div class="form-wrapper">
         <form action="">
@@ -31,6 +37,17 @@
                     <label for="image-input">Image link</label>
                 </div>
             </fieldset>
+            <fieldset>
+
+                <div class="view_banner">
+                    <img src="" id="img_ban">
+
+                </div>
+
+                <input type="file" name="file" id="upload" placeholder="wevwovwe">
+
+            </fieldset>
+
 
             <fieldset class="options">
                 <div class="grid">
@@ -41,10 +58,25 @@
                     <input type="date" name="date" class="input input_date" >
 
                 </div>
-
             </fieldset>
         </form>
     </div>
+    <div class="stats">
+        <div class="stat stat__brodude">
+            <h5 class="title">BroDude</h5>
+            <span class="active">67</span>
+            <span class="paused">10</span>
+            <span class="confirm">869</span>
+        </div>
+        <span class="subdiv"></span>
+        <div class="stat stat__heroine">
+            <h5 class="title">Heroine</h5>
+            <span class="active">5</span>
+            <span class="paused">1</span>
+            <span class="confirm">198</span>
+        </div>
+    </div>
+
 </main>
 
 <script src="public/js/vue.js"></script>
@@ -52,36 +84,4 @@
 
 </body>
 </html>
-
-
-<?php
-//php -S 127.0.0.1:8085
-require_once 'my_api.php';
-
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-
-//header('Content-Type: application/json');
-
-$adfox = new myApi();
-
-
-//$adfox->checkAuth();
-//$adfox->getCampaigns();
-//$adfox->getActiveBanners('heroine');
-//$adfox->getBannersByCampaign('brodude');
-//$adfox->getBannersByAccount();
-
-//echo(json_encode($campaignList));
-//echo(json_encode($activeBannerList));
-//echo(json_encode($bannersByCampaign));
-
-
-//echo(json_encode($adfox->getResults()));
-//echo(json_encode($adfox->getResults()));
-
-//echo json_encode($_GET);
-?>
-
 
