@@ -5,113 +5,159 @@ require_once 'afdox_api.php';
 
 class myApi extends Adfox_API
 {
-	public $lastStatus = 4;
-	public $json = [];
+    public $lastStatus = 4;
+    public $json = [];
 
-	private const DATA = array("loginAccount"  => 'Bilirium',
-	                           "loginPassword" => '43522a07b6e4abf8f50aeaa99d7b8e7019bd7b446e33dd39c05e53a79ca4a02e',
-	                           "object"        => 'account',
-	                           "action"        => 'auth',
-	                           'brodudeID'     => '526462',
-	                           'heroineID'     => '757292');
+    private const DATA = array(
+        "loginAccount" => 'Bilirium',
+        "loginPassword" => '43522a07b6e4abf8f50aeaa99d7b8e7019bd7b446e33dd39c05e53a79ca4a02e',
+        "object" => 'account',
+        "action" => 'auth',
+        'brodudeID' => '526462',
+        'heroineID' => '757292');
 
-	public function __construct($data = array()) {
-		parent::__construct($data);
-		$this->setLogin(myApi::DATA['loginAccount']);
-		$this->setPassword(myApi::DATA['loginPassword']);
-	}
+    public function __construct($data = array())
+    {
+        $this->setAuthData();
+        parent::__construct($data);
+    }
 
-	function getList($actionObject, $add = array()) {
-		$this->options['object'] = 'account'; // по-умолчанию
-		$this->options['action'] = 'list'; // по-умолчанию
-		$this->options['actionObject'] = $actionObject;
+    function setAuthData()
+    {
+        $this->setLogin(myApi::DATA['loginAccount']);
+        $this->setPassword(myApi::DATA['loginPassword']);
+    }
 
-		$this->options = array_merge($this->options, $add);
-		return $this->getResults();
-	}
+    // Сбросить options, установить авторизацию и смержить опции
+    function resetOptions()
+    {
+        $this->options = [];
+        $this->setAuthData();
+    }
 
-	function request($object, $action, $actionObject = '', $show = "advanced") {
-		$this->options['object'] = $object;
-		$this->options['action'] = $action;
-		$this->options['actionObject'] = $actionObject;
-		$this->options['show'] = $show;
+    function mergeOptions($arr)
+    {
+        $this->options = array_merge($this->options, $arr);
+    }
 
-		return $this->getResults();
-	}
 
+    function getList($options)
+    {
+        $this->resetOptions();
+        $this->mergeOptions($options);
+        $this->get();
+    }
 
 // Получить список баннеров по аккаунту
-	function getBannersByAccount() {
-			$this->getList('banner',
-				[
-					'show' => 'advanced',
-					'limit' => 1000,
-					'search' => 'intimi.shop' //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-				]);
-	}
+// https://yandex.ru/dev/adfox/doc/v.1/account/account-list-banner-docpage/
+    function getBannersByAccount($search = '', $show = 'advanced')
+    {
+        $options = [
+            'object' => 'account', // по-умолчанию
+            'action' => 'list',   // по-умолчанию
+            'actionObject' => 'banner',
 
-	function getStatByCampaign($magName) {
-		if ($magName == 'heroine')
-			$nameID = myApi::DATA['heroineID'];
-		if ($magName == 'brodude')
-			$nameID = myApi::DATA['brodudeID'];
+            'limit' => 1000,
+            // 'search' => 'intimi.shop', //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            'show' => $show
+        ];
 
-		$this->getList('banner',
-		array(
-			'object' => 'campaign',
-			'action' => 'info',
-			"objectID" => $nameID,
-			'dateStart' => '2019-01-01',
-			'limit' => 1000
-		));
+        $this->getList($options);
+    }
 
-	}
+    // Получить список баннеров по аккаунту
+    // https://yandex.ru/dev/adfox/doc/v.1/account/account-list-campaign-docpage/
+    function getStatByCampaign($magName)
+    {
+        if ($magName == 'heroine')
+            $nameID = myApi::DATA['heroineID'];
+        if ($magName == 'brodude')
+            $nameID = myApi::DATA['brodudeID'];
 
-	// Получить список баннеров по кампании
-	function getBannersByCampaign($magName) {
-//        if ($magName !== 'heroine' || $magName !== 'brodude') {
-//            return false;
-//        }
+        $options = [
+            'object' => 'account',
+            'action' => 'list',
+            "actionObject" =>'campaign',
+            "actionObjectID" => $nameID,
+            'dateStart' => '2019-05-05'
+        ];
 
-		if ($magName == 'heroine')
-			$name = myApi::DATA['heroineID'];
-		if ($magName == 'brodude')
-			$name = myApi::DATA['brodudeID'];
+        $this->getList($options);
 
-		return $this->getList(
-			'banner',
-			array(
-				"limit"    => '1000',
-				'object'   => 'campaign',
-				"objectID" => $name)
-		);
-	}
+    }
+
+// Получить список баннеров по кампании
+// https://yandex.ru/dev/adfox/doc/v.1/campaign/campaign-list-banner-docpage/
+
+    function getBannersByCampaign($magName)
+    {
+
+        if ($magName == 'heroine')
+            $name = myApi::DATA['heroineID'];
+        if ($magName == 'brodude')
+            $name = myApi::DATA['brodudeID'];
+
+        $options = [
+            'object' => 'campaign',
+            'action' => 'list',
+            'actionObject' => 'banner',
+
+            "limit" => 1000,
+            "objectID" => $name
+        ];
+
+        $this->getList($options);
+
+    }
 
 
-	// Получить список активных баннеров на текущую дату
-	function getActiveBanners() {
-		return $this->getList(
-			'activeBanners',
-			[
-				'date'     => date('Y-m-d'),
-				'limit'    => '1000',
-			]);
-	}
+// Получить список активных баннеров на текущую дату
+// https://yandex.ru/dev/adfox/doc/v.1/account/account-list-activeBanners-docpage/
 
-	// Получить список кампаний
-	function getCampaigns() {
-		return $this->getList('campaign', ['show' => 'common']);
-	}
+    function getActiveBannersByAccount()
+    {
+        $options = [
+            'object' => 'account', // по-умолчанию
+            'action' => 'list',   // по-умолчанию
+            'actionObject' => 'activeBanners',
 
-	// Проверить авторизацию
-	function checkAuth() {
-		$results = $this->request('account', 'auth');
-		return json_encode($this->getResults());
-		//        $status = $results['status']['code'];
-//        if ($status == 0) {
-//            echo 'Авторизация прошла успешно';
-//        } else {
-//            echo  json_encode( $this->getResults());
-//        }
-	}
+            'date' => date('Y-m-d'),
+            'limit' => 1000,
+        ];
+
+        $this->getList($options);
+
+
+    }
+
+// Получить список кампаний
+// https://yandex.ru/dev/adfox/doc/v.1/account/account-list-campaign-docpage/
+
+    function getCampaigns($show = 'common')
+    {
+        $options = [
+            'object' => 'account', // по-умолчанию
+            'action' => 'list',   // по-умолчанию
+            'actionObject' => 'campaign',
+            'show' => $show
+        ];
+
+        $this->getList($options);
+
+
+    }
+
+// Проверить авторизацию
+// https://yandex.ru/dev/adfox/doc/v.1/account/account-auth-docpage/
+    function checkAuth()
+    {
+        $options = [
+            'object' => 'account', // по-умолчанию
+            'action' => 'auth'  // по-умолчанию
+        ];
+
+        $this->getList($options);
+
+
+    }
 }

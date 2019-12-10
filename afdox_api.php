@@ -95,6 +95,7 @@ class Adfox_API {
         // Данные приходят в windows-1251, но! simplexml_load_string их как то сам конвертит в utf-8
         $this->result = simplexml_load_string($this->result);
 
+
         return $this->result;
     }
 
